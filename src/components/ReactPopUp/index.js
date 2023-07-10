@@ -7,36 +7,32 @@ import {GrClose} from 'react-icons/gr'
 
 import SideBar from '../SideBar'
 
+import {Container, Button, CloseBtn} from './styledComponents'
+
 import './index.css'
 
 const ReactPopUp = props => {
   const {mode} = props
-
-  const color = mode ? 'menu' : ''
 
   return (
     <div className="popup-container">
       <Popup
         modal
         trigger={
-          <button type="button" className={`${color} trigger-button`}>
+          <Button mod={mode} type="button">
             <GiHamburgerMenu />
-          </button>
+          </Button>
         }
       >
         {close => (
-          <>
-            <button
-              type="button"
-              className="trigger-button"
-              onClick={() => close()}
-            >
+          <Container mod={mode}>
+            <CloseBtn mod={mode} type="button" onClick={() => close()}>
               <GrClose />
-            </button>
+            </CloseBtn>
             <div className="card">
               <SideBar />
             </div>
-          </>
+          </Container>
         )}
       </Popup>
     </div>

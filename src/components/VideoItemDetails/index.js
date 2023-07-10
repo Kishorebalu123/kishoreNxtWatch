@@ -2,7 +2,7 @@ import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {formatDistanceToNow} from 'date-fns'
+// import {formatDistanceToNow} from 'date-fns'
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {MdPlaylistAdd} from 'react-icons/md'
 
@@ -207,11 +207,7 @@ class VideoItemDetails extends Component {
                   <Title>{title}</Title>
                   <ViewsContainer>
                     <Views>{viewCount}</Views>
-                    <Time>
-                      {formatDistanceToNow(new Date(publishedAt), {
-                        addSuffix: true,
-                      })}
-                    </Time>
+                    <Time>{publishedAt}</Time>
                   </ViewsContainer>
                   <ReactionContainer>
                     <Like like={isLiked} onClick={this.likeVideo} type="button">

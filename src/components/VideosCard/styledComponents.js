@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const EachVideo = styled.li`
   @media screen and (min-width: 576px) {
-    max-width: 280px;
+    display: flex;
+
     margin: 20px 30px 20px 15px;
   }
 `
@@ -21,12 +22,18 @@ export const DetailsCard = styled.div`
 
 export const Description = styled.div`
   margin-top: 0;
+  @media screen and (min-width: 576px) {
+    width: auto;
+  }
 `
 
 export const ProfileLogo = styled.img`
   width: 40px;
   height: 40px;
   margin-right: 10px;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
 `
 
 export const Title = styled.p`
@@ -39,12 +46,13 @@ export const Paragraph = styled.div`
   display: flex;
   color: #606060;
   padding: 0;
-
   justify-content: space-between;
-  flex-wrap: wrap;
   margin-top: 10px;
-  width: 70%;
   align-items: center;
+  @media screen and (min-width: 576px) {
+    width: 150px;
+    flex-wrap: wrap;
+  }
 `
 
 export const ChannelName = styled.p`

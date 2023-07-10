@@ -13,20 +13,25 @@ export const SideCard = styled.div`
   }
 `
 export const Card = styled.div`
-  overflow-y: auto;
-  height: 100vh;
+  overflow: auto;
+  height: 86.2vh;
   width: 100vw;
 `
 export const PremiumContainer = styled.div`
   padding: 30px 40px 0px 30px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
   background-size: cover;
   @media screen and (min-width: 576px) {
     background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
     background-position: 5rem;
   }
 `
-
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  margin-bottom: 30px;
+`
 export const ImageCard = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,11 +39,12 @@ export const ImageCard = styled.div`
 
 export const PremiumLogo = styled.img`
   width: 150px;
+  height: 35px;
 `
 
 export const AboutPremium = styled.p`
   font-size: 18px;
-  width: 200px;
+  width: 220px;
 `
 
 export const GetItNow = styled.button`
@@ -47,6 +53,7 @@ export const GetItNow = styled.button`
   height: 36px;
   width: 110px;
   margin-top: 10px;
+  margin-bottom: 10px;
 `
 export const VideosSection = styled.div`
   background-color: ${props => props.mode && '#181818'};
@@ -113,14 +120,13 @@ export const NoVideosView = styled.div`
   align-items: center;
 `
 export const NoResultsImage = styled.img`
-  height: 200px;
-  width: 250px;
-  margin-bottom: 20px;
+  width: 25%;
 `
 
 export const NoResultsFound = styled.p`
   font-size: 20px;
   font-weight: 500;
+  margin:  ;0;
 `
 
 export const Paragraph = styled.p`
@@ -135,10 +141,11 @@ export const Retry = styled.button`
   background-color: #4f46e5;
   color: #ffffff;
   border-radius: 5px;
-  margin-bottom: 20px;
 `
 export const FailureContainer = styled.div``
 export const FailureImage = styled.img``
 export const Heading = styled.h1``
 export const Content = styled.p``
-export const RetryBtn = styled.button``
+export const RetryBtn = styled(Retry)`
+  margin-bottom: 20px;
+`

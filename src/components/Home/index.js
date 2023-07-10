@@ -31,12 +31,12 @@ import {
   NoResultsImage,
   NoResultsFound,
   Paragraph,
-  Retry,
   FailureContainer,
   FailureImage,
   Heading,
   Content,
   RetryBtn,
+  CloseBtn,
 } from './styledComponents'
 
 const apiConstants = {
@@ -106,9 +106,9 @@ class Home extends Component {
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
               alt="nxt watch logo"
             />
-            <button type="button" data-testid="close" onClick={this.closeBtn}>
+            <CloseBtn type="button" data-testid="close" onClick={this.closeBtn}>
               <GrClose />
-            </button>
+            </CloseBtn>
           </ImageCard>
           <AboutPremium>
             Buy Nxt Watch Premium prepaid plans with UPI
@@ -170,9 +170,7 @@ class Home extends Component {
         />
         <NoResultsFound>No Search results found</NoResultsFound>
         <Paragraph>Try different key words or remove search filter</Paragraph>
-        <Retry onClick={() => this.getVideosApi} type="button">
-          Retry
-        </Retry>
+        <RetryBtn type="button">Retry</RetryBtn>
       </NoVideosView>
     )
   }

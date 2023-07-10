@@ -1,10 +1,12 @@
 import {withRouter} from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import Cookies from 'js-cookie'
-import 'reactjs-popup/dist/index.css'
+
 import {FiLogOut} from 'react-icons/fi'
 
 import ModeContext from '../../context/ModeContext'
+
+import 'reactjs-popup/dist/index.css'
 
 import {
   PopupContainer,

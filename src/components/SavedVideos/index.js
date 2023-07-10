@@ -3,7 +3,7 @@ import {Component} from 'react'
 import {MdPlaylistAdd} from 'react-icons/md'
 import Header from '../Header'
 import SideBar from '../SideBar'
-import VideoCard from '../VideoCard'
+import VideosCard from '../VideosCard'
 import ModeContext from '../../context/ModeContext'
 
 import {
@@ -15,8 +15,10 @@ import {
   Image,
   Saved,
   Heading,
-  Paragraph,
+  Para,
   Banner,
+  SavedVideosCard,
+  Icon,
 } from './styledComponents'
 
 class SavedVideos extends Component {
@@ -35,17 +37,19 @@ class SavedVideos extends Component {
                 </SideCard>
 
                 {savedVideos.length > 0 ? (
-                  <>
+                  <SavedVideosCard>
                     <Banner data-testid="banner">
-                      <MdPlaylistAdd />
+                      <Icon>
+                        <MdPlaylistAdd />
+                      </Icon>
                       <Saved>Saved Videos</Saved>
                     </Banner>
                     <VideosList>
                       {savedVideos.map(eachVideo => (
-                        <VideoCard videoData={eachVideo} key={eachVideo.id} />
+                        <VideosCard videoData={eachVideo} key={eachVideo.id} />
                       ))}
                     </VideosList>
-                  </>
+                  </SavedVideosCard>
                 ) : (
                   <EmptyView>
                     <Image
@@ -53,9 +57,7 @@ class SavedVideos extends Component {
                       alt="no saved videos"
                     />
                     <Heading>NO saved videos found</Heading>
-                    <Paragraph>
-                      You can save your videos while watching them
-                    </Paragraph>
+                    <Para>You can save your videos while watching them</Para>
                   </EmptyView>
                 )}
               </MainContainer>

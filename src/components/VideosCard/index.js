@@ -17,7 +17,7 @@ import {
   Paragraph,
 } from './styledComponents'
 
-const VideoCard = props => {
+const VideosCard = props => {
   const {videoData} = props
 
   const {
@@ -56,4 +56,4 @@ const VideoCard = props => {
     </ModeContext.Consumer>
   )
 }
-export default VideoCard
+export default VideosCard

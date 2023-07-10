@@ -1,10 +1,9 @@
 import React from 'react'
 
 const ModeContext = React.createContext({
-  savedVideos: [],
+  //  savedVideos: [],
   changeMode: () => {},
   changeTab: () => {},
   addToSavedVideos: () => {},
-  savedVideosList: () => {},
 })
 export default ModeContext

@@ -5,6 +5,13 @@ export const Container = styled.div`
 `
 export const MainContainer = styled.div`
   display: flex;
+  width: 100vw;
+`
+
+export const SavedVideosCard = styled.div`
+  max-height: 86vh;
+  overflow-y: auto;
+  width: 100%;
 `
 export const SideCard = styled.div`
   @media screen and (max-width: 767px) {
@@ -15,29 +22,28 @@ export const VideosList = styled.ul`
   list-style-type: none;
   padding: 0;
 `
-export const Banner = styled.div`
-  display: flex;
-`
 
 export const EmptyView = styled.div``
 export const Image = styled.img`
   width: 25%;
 `
 export const Heading = styled.h1``
-export const Paragraph = styled.p``
-
-export const ReactionContainer = styled.ul``
-export const Like = styled.li``
-export const LikeBtn = styled.button``
-export const Dislike = styled(Like)``
-export const Save = styled(Like)``
-export const Line = styled.hr``
-export const ChannelContainer = styled.div``
-export const ChannelDetails = styled.div``
-export const ChannelLogo = styled.img``
-
-export const ChannelName = styled.p``
-export const Subscribers = styled.p``
-export const Description = styled.p``
+export const Para = styled.p``
 
 export const Saved = styled.h1``
+
+export const Banner = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #ebebeb;
+`
+export const Icon = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 0px 20px 0px 20px;
+  font-size: 30px;
+  padding: 8px 0px 10px 10px;
+  background-color: #d7dfe9;
+  color: red;
+`

@@ -42,7 +42,7 @@ const SideBar = () => (
         <SideBarBg mode={darkMode}>
           <Categories>
             {categoriesList.map(eachCategory => (
-              <Link to={eachCategory.path}>
+              <Link to={eachCategory.path} style={{textDecoration: 'none'}}>
                 <EachCategory
                   key={eachCategory.id}
                   active={activeTab === eachCategory.id}

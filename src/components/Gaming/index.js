@@ -12,6 +12,8 @@ import ModeContext from '../../context/ModeContext'
 import {
   Container,
   GamingContainer,
+  GamingCard,
+  Icon,
   SideCard,
   VideosContainer,
   VideosList,
@@ -46,37 +48,33 @@ class Gaming extends Component {
   }
 
   getVideosApi = async () => {
-    try {
-      const token = Cookies.get('jwt_token')
+    const token = Cookies.get('jwt_token')
 
-      this.setState({apiStatus: apiConstants.inProgress})
-      const options = {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-      const url = `https://apis.ccbp.in/videos/gaming`
+    this.setState({apiStatus: apiConstants.inProgress})
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    const url = `https://apis.ccbp.in/videos/gaming`
 
-      const response = await fetch(url, options)
-      const data = await response.json()
-      // console.log(data)
-      if (response.ok) {
-        const updatedData = data.videos.map(eachItem => ({
-          id: eachItem.id,
-          title: eachItem.title,
-          thumbnailUrl: eachItem.thumbnail_url,
-          viewCount: eachItem.view_count,
-        }))
-        this.setState({
-          videosData: updatedData,
-          apiStatus: apiConstants.success,
-        })
-      } else {
-        this.setState({apiStatus: apiConstants.failure})
-      }
-    } catch (error) {
-      console.log(error.message)
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (response.ok) {
+      const updatedData = data.videos.map(eachItem => ({
+        id: eachItem.id,
+        title: eachItem.title,
+        thumbnailUrl: eachItem.thumbnail_url,
+        viewCount: eachItem.view_count,
+      }))
+      this.setState({
+        videosData: updatedData,
+        apiStatus: apiConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiConstants.failure})
     }
   }
 
@@ -118,26 +116,38 @@ class Gaming extends Component {
     const {videosData} = this.state
 
     return (
-      <>
-        <Banner data-testid="banner">
-          <SiYoutubegaming />
-          <Game>Gaming</Game>
-        </Banner>
-        <VideosList>
-          {videosData.map(eachVideo => {
-            const {id, thumbnailUrl, title, viewCount} = eachVideo
-            return (
-              <Link to={`/videos/${id}`}>
-                <EachItem key={id}>
-                  <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-                  <Title>{title}</Title>
-                  <ViewsCount>{viewCount}</ViewsCount>
-                </EachItem>
-              </Link>
-            )
-          })}
-        </VideosList>
-      </>
+      <ModeContext.Consumer>
+        {value => {
+          const {darkMode} = value
+          return (
+            <GamingCard>
+              <Banner data-testid="banner">
+                <Icon>
+                  <SiYoutubegaming />
+                </Icon>
+                <Game>Gaming</Game>
+              </Banner>
+              <VideosList>
+                {videosData.map(eachVideo => {
+                  const {id, thumbnailUrl, title, viewCount} = eachVideo
+                  return (
+                    <Link style={{textDecoration: 'none'}} to={`/videos/${id}`}>
+                      <EachItem key={id}>
+                        <ThumbnailImage
+                          src={thumbnailUrl}
+                          alt="video thumbnail"
+                        />
+                        <Title mode={darkMode}>{title}</Title>
+                        <ViewsCount>{viewCount} Watching Worldwide</ViewsCount>
+                      </EachItem>
+                    </Link>
+                  )
+                })}
+              </VideosList>
+            </GamingCard>
+          )
+        }}
+      </ModeContext.Consumer>
     )
   }
 

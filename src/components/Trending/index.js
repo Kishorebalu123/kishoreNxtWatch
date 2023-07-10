@@ -7,11 +7,12 @@ import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import SideBar from '../SideBar'
 import ModeContext from '../../context/ModeContext'
-import VideoCard from '../VideoCard'
+import VideosCard from '../VideosCard'
 
 import {
   Container,
   TrendingContainer,
+  TrendingCard,
   SideCard,
   VideosContainer,
   VideosList,
@@ -22,6 +23,7 @@ import {
   RetryBtn,
   Trend,
   Banner,
+  Icon,
 } from './styledComponents'
 
 const apiConstants = {
@@ -42,40 +44,36 @@ class Trending extends Component {
   }
 
   getVideosApi = async () => {
-    try {
-      const token = Cookies.get('jwt_token')
+    const token = Cookies.get('jwt_token')
 
-      this.setState({apiStatus: apiConstants.inProgress})
-      const options = {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-      const url = `https://apis.ccbp.in/videos/trending`
+    this.setState({apiStatus: apiConstants.inProgress})
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    const url = `https://apis.ccbp.in/videos/trending`
 
-      const response = await fetch(url, options)
-      const data = await response.json()
-      console.log(data)
-      if (response.ok) {
-        const updatedData = data.videos.map(eachItem => ({
-          id: eachItem.id,
-          title: eachItem.title,
-          thumbnailUrl: eachItem.thumbnail_url,
-          viewCount: eachItem.view_count,
-          publishedAt: eachItem.published_at,
-          channelName: eachItem.channel.name,
-          profileImageUrl: eachItem.channel.profile_image_url,
-        }))
-        this.setState({
-          videosData: updatedData,
-          apiStatus: apiConstants.success,
-        })
-      } else {
-        this.setState({apiStatus: apiConstants.failure})
-      }
-    } catch (error) {
-      console.log(error.message)
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (response.ok) {
+      const updatedData = data.videos.map(eachItem => ({
+        id: eachItem.id,
+        title: eachItem.title,
+        thumbnailUrl: eachItem.thumbnail_url,
+        viewCount: eachItem.view_count,
+        publishedAt: eachItem.published_at,
+        channelName: eachItem.channel.name,
+        profileImageUrl: eachItem.channel.profile_image_url,
+      }))
+      this.setState({
+        videosData: updatedData,
+        apiStatus: apiConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiConstants.failure})
     }
   }
 
@@ -117,17 +115,19 @@ class Trending extends Component {
     const {videosData} = this.state
 
     return (
-      <>
+      <TrendingCard>
         <Banner data-testid="banner">
-          <HiFire />
+          <Icon>
+            <HiFire />
+          </Icon>
           <Trend>Trending</Trend>
         </Banner>
         <VideosList>
           {videosData.map(eachVideo => (
-            <VideoCard videoData={eachVideo} key={eachVideo.id} />
+            <VideosCard videoData={eachVideo} key={eachVideo.id} />
           ))}
         </VideosList>
-      </>
+      </TrendingCard>
     )
   }
 
