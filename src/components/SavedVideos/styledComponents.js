@@ -23,12 +23,22 @@ export const VideosList = styled.ul`
   padding: 0;
 `
 
-export const EmptyView = styled.div``
+export const EmptyView = styled.div`
+  height: 84vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 export const Image = styled.img`
   width: 25%;
 `
-export const Heading = styled.h1``
-export const Para = styled.p``
+export const Heading = styled.h1`
+  color: ${props => (props.mode ? '#ffffff' : '#000000')};
+`
+export const Para = styled.p`
+  color: ${props => props.mode && '#ffffff'};
+`
 
 export const Saved = styled.h1``
 

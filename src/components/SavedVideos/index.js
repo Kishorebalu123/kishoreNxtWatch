@@ -56,8 +56,10 @@ class SavedVideos extends Component {
                       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
                       alt="no saved videos"
                     />
-                    <Heading>NO saved videos found</Heading>
-                    <Para>You can save your videos while watching them</Para>
+                    <Heading mode={darkMode}>NO saved videos found</Heading>
+                    <Para mode={darkMode}>
+                      You can save your videos while watching them
+                    </Para>
                   </EmptyView>
                 )}
               </MainContainer>

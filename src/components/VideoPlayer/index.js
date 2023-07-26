@@ -8,7 +8,7 @@ const VideoPlayer = props => {
   return (
     <div className="video-container">
       <div className="responsive-container">
-        <ReactPlayer controls width="70vw" height="40vh" url={url} />
+        <ReactPlayer controls width="100vw" height="40vh" url={url} />
       </div>
     </div>
   )

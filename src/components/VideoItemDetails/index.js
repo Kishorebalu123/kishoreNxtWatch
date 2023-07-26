@@ -18,6 +18,7 @@ import {
   ReactPlayerContainer,
   Title,
   ViewsContainer,
+  SubContainer,
   Views,
   Time,
   ReactionContainer,
@@ -184,7 +185,7 @@ class VideoItemDetails extends Component {
     return (
       <ModeContext.Consumer>
         {value => {
-          const {addToSavedVideos, savedVideos} = value
+          const {addToSavedVideos, savedVideos, darkMode} = value
           const {isLiked, isDisLiked} = this.state
           const onSave = () => {
             addToSavedVideos(videoData)
@@ -204,38 +205,45 @@ class VideoItemDetails extends Component {
                     <VideoPlayer url={videoUrl} />
                   </ReactPlayerContainer>
 
-                  <Title>{title}</Title>
-                  <ViewsContainer>
-                    <Views>{viewCount}</Views>
-                    <Time>{publishedAt}</Time>
-                  </ViewsContainer>
-                  <ReactionContainer>
-                    <Like like={isLiked} onClick={this.likeVideo} type="button">
-                      <AiOutlineLike /> Like
-                    </Like>
-                    <Dislike
-                      liked={isDisLiked}
-                      onClick={this.disLikeVideo}
-                      type="button"
-                    >
-                      <AiOutlineDislike /> Dislike
-                    </Dislike>
-                    <Save>
-                      <MdPlaylistAdd />
-                      <SaveBtn saved={isSaved} type="button" onClick={onSave}>
-                        {text}
-                      </SaveBtn>
-                    </Save>
-                  </ReactionContainer>
-                  <Line />
+                  <Title mode={darkMode}>{title}</Title>
+                  <SubContainer>
+                    <ViewsContainer mode={darkMode}>
+                      <Views>{viewCount} views </Views>
+                      <Time>{publishedAt}</Time>
+                    </ViewsContainer>
+                    <ReactionContainer mode={darkMode}>
+                      <Like
+                        like={isLiked}
+                        onClick={this.likeVideo}
+                        type="button"
+                      >
+                        <AiOutlineLike /> Like
+                      </Like>
+                      <Dislike
+                        liked={isDisLiked}
+                        onClick={this.disLikeVideo}
+                        type="button"
+                      >
+                        <AiOutlineDislike /> Dislike
+                      </Dislike>
+                      <Save>
+                        <SaveBtn saved={isSaved} type="button" onClick={onSave}>
+                          <MdPlaylistAdd /> {text}
+                        </SaveBtn>
+                      </Save>
+                    </ReactionContainer>
+                  </SubContainer>
+                  <Line mode={darkMode} />
                   <ChannelContainer>
                     <ChannelLogo src={profileImageUrl} alt="channel logo" />
                     <ChannelDetails>
-                      <ChannelName>{name}</ChannelName>
-                      <Subscribers>{subscriberCount}</Subscribers>
+                      <ChannelName mode={darkMode}>{name}</ChannelName>
+                      <Subscribers mode={darkMode}>
+                        {subscriberCount} subscribers
+                      </Subscribers>
                     </ChannelDetails>
                   </ChannelContainer>
-                  <Description>{description}</Description>
+                  <Description mode={darkMode}>{description}</Description>
                 </VideoDetailsContainer>
               </MainContainer>
             </>

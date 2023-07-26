@@ -33,15 +33,17 @@ class Header extends Component {
     return (
       <ModeContext.Consumer>
         {value => {
-          const {darkMode, changeMode} = value
+          const {darkMode, changeMode, changeTab} = value
           const onClickBtn = () => {
             changeMode(!darkMode)
           }
+
           return (
             <>
               <NavContainer mode={darkMode}>
                 <Link to="/">
                   <WebsiteLogo
+                    onClick={() => changeTab('HOME')}
                     src={
                       darkMode
                         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
