@@ -71,7 +71,7 @@ class Header extends Component {
                     />
                   </NavItem>
                   <NavItem>
-                    <LogoutPopup />
+                    <LogoutPopup mode={darkMode} />
                   </NavItem>
                 </NavItems>
               </NavContainer>

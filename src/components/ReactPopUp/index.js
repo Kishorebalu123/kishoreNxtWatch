@@ -1,21 +1,23 @@
 import Popup from 'reactjs-popup'
 
-import 'reactjs-popup/dist/index.css'
-
 import {GiHamburgerMenu} from 'react-icons/gi'
-import {GrClose} from 'react-icons/gr'
-
+import {AiOutlineClose} from 'react-icons/ai'
+import 'reactjs-popup/dist/index.css'
 import SideBar from '../SideBar'
 
-import {Container, Button, CloseBtn} from './styledComponents'
-
-import './index.css'
+import {
+  MenuContainer,
+  Menu,
+  Container,
+  Button,
+  CloseBtn,
+} from './styledComponents'
 
 const ReactPopUp = props => {
   const {mode} = props
 
   return (
-    <div className="popup-container">
+    <MenuContainer>
       <Popup
         modal
         trigger={
@@ -27,15 +29,15 @@ const ReactPopUp = props => {
         {close => (
           <Container mod={mode}>
             <CloseBtn mod={mode} type="button" onClick={() => close()}>
-              <GrClose />
+              <AiOutlineClose />
             </CloseBtn>
-            <div className="card">
+            <Menu>
               <SideBar />
-            </div>
+            </Menu>
           </Container>
         )}
       </Popup>
-    </div>
+    </MenuContainer>
   )
 }
 export default ReactPopUp

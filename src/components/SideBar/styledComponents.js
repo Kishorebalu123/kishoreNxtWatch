@@ -7,6 +7,9 @@ export const SideBarBg = styled.div`
   height: 86.2vh;
   min-width: 150px;
   background-color: ${props => props.mode && ' #313131'};
+  @media screen and (max-width: 767px) {
+    height: 300px;
+  }
 `
 
 export const Categories = styled.ul`

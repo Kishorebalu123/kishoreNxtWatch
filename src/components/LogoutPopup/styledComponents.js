@@ -5,21 +5,38 @@ export const PopupContainer = styled.div`
   align-items: center;
   justify-content: center;
 `
-
 export const PopupCard = styled.div`
-  height: 180px;
-  width: 320px;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${props => (props.mode ? '#383838' : '#ffffff')};
 `
-export const Paragraph = styled.p``
+export const Paragraph = styled.p`
+  color: ${props => (props.mode ? '#ffffff' : '#00306e')};
+`
 
-export const Buttons = styled.div``
+export const Buttons = styled.div`
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`
 
-export const CancelBtn = styled.button``
-
-export const ConfirmBtn = styled.button``
+export const CancelBtn = styled.button`
+  height: 40px;
+  width: 80px;
+  background-color: transparent;
+  border: 1px solid gray;
+  color: gray;
+  border-radius: 3px;
+`
+export const ConfirmBtn = styled(CancelBtn)`
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: 0;
+`
 
 export const LogoutBtn = styled.button`
   border: 1px solid ${props => (props.mode ? '#ffffff' : '#3b82f6')};

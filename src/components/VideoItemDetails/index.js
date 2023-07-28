@@ -87,7 +87,7 @@ class VideoItemDetails extends Component {
         videoUrl: each.video_url,
         viewCount: each.view_count,
         description: each.description,
-        name: each.channel.name,
+        channelName: each.channel.name,
         profileImageUrl: each.channel.profile_image_url,
         subscriberCount: each.channel.subscriber_count,
       }
@@ -173,13 +173,13 @@ class VideoItemDetails extends Component {
     const {
       description,
       id,
-      name,
       title,
       profileImageUrl,
       publishedAt,
       subscriberCount,
       videoUrl,
       viewCount,
+      channelName,
     } = videoData
 
     return (
@@ -237,7 +237,7 @@ class VideoItemDetails extends Component {
                   <ChannelContainer>
                     <ChannelLogo src={profileImageUrl} alt="channel logo" />
                     <ChannelDetails>
-                      <ChannelName mode={darkMode}>{name}</ChannelName>
+                      <ChannelName mode={darkMode}>{channelName}</ChannelName>
                       <Subscribers mode={darkMode}>
                         {subscriberCount} subscribers
                       </Subscribers>

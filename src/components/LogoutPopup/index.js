@@ -6,8 +6,6 @@ import {FiLogOut} from 'react-icons/fi'
 
 import ModeContext from '../../context/ModeContext'
 
-import 'reactjs-popup/dist/index.css'
-
 import {
   PopupContainer,
   PopupCard,
@@ -47,8 +45,10 @@ const LogoutPopup = props => {
             >
               {close => (
                 <>
-                  <PopupCard>
-                    <Paragraph>Are you sure, you want to logout</Paragraph>
+                  <PopupCard mode={darkMode}>
+                    <Paragraph mode={darkMode}>
+                      Are you sure you want to logout?
+                    </Paragraph>
 
                     <Buttons>
                       <CancelBtn onClick={() => close()} type="button">
