@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-// import {formatDistanceToNow} from 'date-fns'
+import {formatDistanceStrict} from 'date-fns'
 
 import ModeContext from '../../context/ModeContext'
 
@@ -21,7 +21,7 @@ const VideoCard = props => {
   const {videoData} = props
 
   const {
-    channelName,
+    name,
     id,
     profileImageUrl,
     publishedAt,
@@ -29,6 +29,9 @@ const VideoCard = props => {
     title,
     viewCount,
   } = videoData
+  const date = formatDistanceStrict(new Date(publishedAt), new Date(), {
+    addSuffix: true,
+  })
 
   return (
     <ModeContext.Consumer>
@@ -44,9 +47,9 @@ const VideoCard = props => {
               <Description>
                 <Title mode={darkMode}>{title}</Title>
                 <Paragraph>
-                  <ChannelName>{channelName}</ChannelName>
+                  <ChannelName>{name}</ChannelName>
                   <Views>Views {viewCount}</Views>
-                  <PublishedAt>{publishedAt}</PublishedAt>
+                  <PublishedAt>{date}</PublishedAt>
                 </Paragraph>
               </Description>
             </DetailsCard>

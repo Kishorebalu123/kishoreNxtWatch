@@ -80,7 +80,7 @@ class Home extends Component {
         thumbnailUrl: eachItem.thumbnail_url,
         viewCount: eachItem.view_count,
         publishedAt: eachItem.published_at,
-        channelName: eachItem.channel.name,
+        name: eachItem.channel.name,
         profileImageUrl: eachItem.channel.profile_image_url,
       }))
       this.setState({

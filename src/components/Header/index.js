@@ -61,7 +61,7 @@ class Header extends Component {
                   >
                     {darkMode ? <FiSun /> : <FaMoon />}
                   </ModeBtn>
-                  <NavItem>
+                  <NavItem key="id1">
                     <Menu>
                       <ReactPopUp mode={darkMode} />
                     </Menu>
@@ -70,7 +70,7 @@ class Header extends Component {
                       alt="profile"
                     />
                   </NavItem>
-                  <NavItem>
+                  <NavItem key="id">
                     <LogoutPopup mode={darkMode} />
                   </NavItem>
                 </NavItems>

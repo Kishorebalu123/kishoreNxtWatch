@@ -2,7 +2,7 @@ import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-// import {formatDistanceToNow} from 'date-fns'
+import {formatDistanceStrict} from 'date-fns'
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {MdPlaylistAdd} from 'react-icons/md'
 
@@ -87,7 +87,7 @@ class VideoItemDetails extends Component {
         videoUrl: each.video_url,
         viewCount: each.view_count,
         description: each.description,
-        channelName: each.channel.name,
+        name: each.channel.name,
         profileImageUrl: each.channel.profile_image_url,
         subscriberCount: each.channel.subscriber_count,
       }
@@ -179,7 +179,7 @@ class VideoItemDetails extends Component {
       subscriberCount,
       videoUrl,
       viewCount,
-      channelName,
+      name,
     } = videoData
 
     return (
@@ -192,6 +192,9 @@ class VideoItemDetails extends Component {
           }
           const isSaved = savedVideos.some(each => each.id === id)
           const text = isSaved ? 'Saved' : 'Save'
+          const date = formatDistanceStrict(new Date(publishedAt), new Date(), {
+            addSuffix: true,
+          })
           return (
             <>
               <Header />
@@ -209,7 +212,7 @@ class VideoItemDetails extends Component {
                   <SubContainer>
                     <ViewsContainer mode={darkMode}>
                       <Views>{viewCount} views </Views>
-                      <Time>{publishedAt}</Time>
+                      <Time>{date}</Time>
                     </ViewsContainer>
                     <ReactionContainer mode={darkMode}>
                       <Like
@@ -237,7 +240,7 @@ class VideoItemDetails extends Component {
                   <ChannelContainer>
                     <ChannelLogo src={profileImageUrl} alt="channel logo" />
                     <ChannelDetails>
-                      <ChannelName mode={darkMode}>{channelName}</ChannelName>
+                      <ChannelName mode={darkMode}>{name}</ChannelName>
                       <Subscribers mode={darkMode}>
                         {subscriberCount} subscribers
                       </Subscribers>

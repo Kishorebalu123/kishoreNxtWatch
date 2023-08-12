@@ -1,7 +1,7 @@
 import {withRouter} from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import Cookies from 'js-cookie'
-
+import 'reactjs-popup/dist/index.css'
 import {FiLogOut} from 'react-icons/fi'
 
 import ModeContext from '../../context/ModeContext'
@@ -18,16 +18,16 @@ import {
 } from './styledComponents'
 
 const LogoutPopup = props => {
-  const logoutBtn = () => {
-    const {history} = props
-    Cookies.remove('jwt_token')
-    history.replace('/login')
-  }
+  const {history} = props
   return (
     <ModeContext.Consumer>
       {value => {
-        const {darkMode} = value
-
+        const {darkMode, changeTab} = value
+        const logoutBtn = () => {
+          Cookies.remove('jwt_token')
+          history.replace('/login')
+          changeTab('HOME')
+        }
         return (
           <PopupContainer>
             <Popup

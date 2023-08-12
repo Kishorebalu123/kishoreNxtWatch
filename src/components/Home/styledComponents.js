@@ -22,10 +22,8 @@ export const PremiumContainer = styled.div`
   margin-bottom: 20px;
   background-color: #ffffff;
   background-size: cover;
-  @media screen and (min-width: 576px) {
-    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
-    background-position: 5rem;
-  }
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-position: 5rem;
 `
 export const CloseBtn = styled.button`
   background-color: transparent;
@@ -123,7 +121,7 @@ export const NoResultsImage = styled.img`
   width: 25%;
 `
 
-export const NoResultsFound = styled.p`
+export const NoResultsFound = styled.h1`
   font-size: 20px;
   font-weight: 500;
   margin:  ;0;
@@ -134,7 +132,7 @@ export const Paragraph = styled.p`
   font-size: 18px;
 `
 
-export const Retry = styled.button`
+export const RetryBtn = styled.button`
   height: 40px;
   width: 90px;
   border: 0;
@@ -146,6 +144,3 @@ export const FailureContainer = styled.div``
 export const FailureImage = styled.img``
 export const Heading = styled.h1``
 export const Content = styled.p``
-export const RetryBtn = styled(Retry)`
-  margin-bottom: 20px;
-`

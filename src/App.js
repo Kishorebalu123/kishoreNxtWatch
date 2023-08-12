@@ -17,18 +17,18 @@ import './App.css'
 class App extends Component {
   state = {
     savedVideos: [],
-    darkMode: 'false',
+    darkMode: false,
     activeTab: 'HOME',
   }
 
   componentDidMount() {
-    const getMode = JSON.parse(localStorage.getItem('mod'))
+    //  const getMode = JSON.parse(localStorage.getItem('mod'))
     const getActiveTab = localStorage.getItem('tab')
     const getSavedVideos = this.getSavedVideo()
     this.setState({
       activeTab: getActiveTab,
       savedVideos: getSavedVideos,
-      darkMode: getMode,
+      //  darkMode: getMode,
     })
   }
 
@@ -53,13 +53,13 @@ class App extends Component {
     localStorage.setItem('tab', activeTab)
   }
 
-  setMode = () => {
-    const {darkMode} = this.state
-    localStorage.setItem('mod', JSON.stringify(darkMode))
-  }
+  //   setMode = () => {
+  //     const {darkMode} = this.state
+  //     localStorage.setItem('mod', JSON.stringify(darkMode))
+  //   }
 
   changeMode = darkMode => {
-    this.setState({darkMode}, this.setMode)
+    this.setState({darkMode})
   }
 
   changeTab = activeTab => {

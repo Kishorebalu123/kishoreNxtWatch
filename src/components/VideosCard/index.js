@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-// import {formatDistanceToNow} from 'date-fns'
+import {formatDistanceStrict} from 'date-fns'
 
 import ModeContext from '../../context/ModeContext'
 
@@ -21,7 +21,7 @@ const VideosCard = props => {
   const {videoData} = props
 
   const {
-    channelName,
+    name,
     id,
     profileImageUrl,
     publishedAt,
@@ -29,28 +29,31 @@ const VideosCard = props => {
     title,
     viewCount,
   } = videoData
-
+  const date = formatDistanceStrict(new Date(publishedAt), new Date(), {
+    addSuffix: true,
+  })
   return (
     <ModeContext.Consumer>
       {value => {
         const {darkMode} = value
         return (
-          <EachVideo>
-            <Link to={`/videos/${id}`}>
+          <Link to={`/videos/${id}`}>
+            <EachVideo>
               <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-            </Link>
-            <DetailsCard>
-              <ProfileLogo src={profileImageUrl} alt="channel logo" />
-              <Description>
-                <Title mode={darkMode}>{title}</Title>
-                <Paragraph>
-                  <ChannelName>{channelName}</ChannelName>
-                  <Views>Views {viewCount}</Views>
-                  <PublishedAt>{publishedAt}</PublishedAt>
-                </Paragraph>
-              </Description>
-            </DetailsCard>
-          </EachVideo>
+
+              <DetailsCard>
+                <ProfileLogo src={profileImageUrl} alt="channel logo" />
+                <Description>
+                  <Title mode={darkMode}>{title}</Title>
+                  <Paragraph>
+                    <ChannelName>{name}</ChannelName>
+                    <Views>Views {viewCount}</Views>
+                    <PublishedAt>{date}</PublishedAt>
+                  </Paragraph>
+                </Description>
+              </DetailsCard>
+            </EachVideo>
+          </Link>
         )
       }}
     </ModeContext.Consumer>
