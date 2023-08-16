@@ -131,7 +131,7 @@ class Gaming extends Component {
                 {videosData.map(eachVideo => {
                   const {id, thumbnailUrl, title, viewCount} = eachVideo
                   return (
-                    <Link style={{textDecoration: 'none'}} to={`/videos/${id}`}>
+                    <Link to={`/videos/${id}`}>
                       <EachItem key={id}>
                         <ThumbnailImage
                           src={thumbnailUrl}
